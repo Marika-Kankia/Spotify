@@ -14,20 +14,59 @@ public class Album {
     private String artist;
     private int releaseYear;
 
-    @OneToMany(mappedBy = "album")
+    @OneToMany(mappedBy = "album", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Song> songs;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
-    public Object getTitle() {
+    // Getters and Setters
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
         return title;
     }
 
-    public Object getArtist() {
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getArtist() {
         return artist;
     }
 
-    // Getters and Setters
+    public void setArtist(String artist) {
+        this.artist = artist;
+    }
+
+    public int getReleaseYear() {
+        return releaseYear;
+    }
+
+    public void setReleaseYear(int releaseYear) {
+        this.releaseYear = releaseYear;
+    }
+
+    public Set<Song> getSongs() {
+        return songs;
+    }
+
+    public void setSongs(Set<Song> songs) {
+        this.songs = songs;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }
